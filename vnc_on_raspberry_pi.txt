@@ -1,0 +1,78 @@
+
+
+vnc on raspberry pi
+
+On Raspberry pi
+=======================
+install vncserver on raspberry pi
+#if already installed vncserver. skip step 1
+
+step 1. 
+	> sudo apt get install vncserver
+
+step 2:
+	> vncserver &
+
+output: 
+=========
+New 'X' desktop is raspberrypi:1
+
+Starting applications specified in /home/pi/.vnc/xstartup
+Log file is /home/pi/.vnc/raspberrypi:1.log
+
+
+On any debian based linux machine:
+========================
+#if already installed vncserver. skip step 1
+step 1.
+	>sudo apt-get install xtightvncviewer
+
+step 2.
+use command 
+	> xtightvncviewer <vncserver name:port>
+# use the same_name as the output of the vncserver from raspberry pi
+
+	>xtightvncviewer raspberrypi:1 
+	or 
+	>xtightvncviwerer <ipaddress: number>
+	
+	ravimh@ravimh-OptiPlex-GX620:~$ xtightvncviewer raspberrypi:1 
+	                              or $ xtightvncviewer raspberrypi:1
+	Connected to RFB server, using protocol version 3.8
+	Enabling TightVNC protocol extensions
+	Performing standard VNC authentication
+	Password:   <password of other machine login>
+Ex:
+
+ravimh@ravimh-OptiPlex-GX620:~$ xtightvncviewer 192.168.0.108
+xtightvncviewer: ConnectToTcpAddr: connect: Connection refused
+Unable to connect to VNC server
+ravimh@ravimh-OptiPlex-GX620:~$ xtightvncviewer raspberrypi:1 
+Couldn't convert 'raspberrypi' to host address
+ravimh@ravimh-OptiPlex-GX620:~$ xtightvncviewer 192.168.0.108:1
+
+
+======================================
+FAQs:
+
+Problems: 1. sometimes it doesnt connect
+Solution: setup vncpasswd on the server(raspberry pi)
+
+	on raspberry:
+	===========
+	>vncpasswd
+	set password :
+	set view only password (y/n)?
+	#tinker with this a bit to set the password and use the same while connecting xtightvncviewer
+
+
+=================================================
+http://www.penguintutor.com/linux/tightvnc
+
+
+
+
+
+
+
+
